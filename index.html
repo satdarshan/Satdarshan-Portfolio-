@@ -3,782 +3,188 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Satdarshan Khalsa, RDH — Dental Hygiene Portfolio</title>
+  <title>Satdarshan Khalsa, RDH - Dental Hygiene Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ─── CSS Variables ─────────────────────────────── */
     :root {
-      --teal:        #1e5f54;
-      --teal-mid:    #2a7a6a;
-      --teal-light:  #4a9e8e;
-      --cream:       #f7f2e9;
-      --cream-dark:  #ede6d6;
-      --gold:        #b8925a;
-      --gold-light:  #d4ad78;
-      --text:        #1c1c1c;
-      --text-mid:    #4a4a4a;
-      --text-light:  #7a7a7a;
-      --white:       #ffffff;
+      --teal:       #1e5f54;
+      --teal-mid:   #2a7a6a;
+      --teal-light: #4a9e8e;
+      --cream:      #f7f2e9;
+      --cream-dark: #ede6d6;
+      --gold:       #b8925a;
+      --gold-light: #d4ad78;
+      --text:       #1c1c1c;
+      --text-mid:   #4a4a4a;
+      --text-light: #7a7a7a;
+      --white:      #ffffff;
     }
-
-    /* ─── Reset ─────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Jost', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      overflow-x: hidden;
-      line-height: 1.7;
-    }
-
-    /* ─── Scroll Reveal ──────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
+    body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; line-height: 1.7; }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
-    /* ─── Navigation ─────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 4rem;
-      background: rgba(247, 242, 233, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(30, 95, 84, 0.12);
-      transition: box-shadow 0.3s;
-    }
-    nav.scrolled { box-shadow: 0 4px 30px rgba(30, 95, 84, 0.08); }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--teal);
-      letter-spacing: 0.04em;
-      text-decoration: none;
-    }
+    /* Nav */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: rgba(247,242,233,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(30,95,84,0.12); transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(30,95,84,0.08); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--teal); letter-spacing: 0.04em; text-decoration: none; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      text-decoration: none;
-      transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0; right: 0;
-      height: 1px;
-      background: var(--teal);
-      transform: scaleX(0);
-      transition: transform 0.25s ease;
-    }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 1px; background: var(--teal); transform: scaleX(0); transition: transform 0.25s ease; }
     .nav-links a:hover { color: var(--teal); }
     .nav-links a:hover::after { transform: scaleX(1); }
-
-    /* Hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .hamburger span { width: 24px; height: 2px; background: var(--teal); border-radius: 2px; transition: all 0.3s; }
     .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    /* ─── Hero ───────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      background: var(--teal);
-      padding: 8rem 4rem 6rem;
-    }
-    .hero-bg-pattern {
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 15% 85%, rgba(255,255,255,0.04) 0%, transparent 50%),
-        radial-gradient(circle at 85% 20%, rgba(184,146,90,0.15) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(30,95,84,0.5) 0%, transparent 70%);
-    }
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 900px;
-    }
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 1.5rem;
-      animation: fadeDown 1s ease 0.2s both;
-    }
-    .hero-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.5rem, 8vw, 7rem);
-      font-weight: 300;
-      color: var(--white);
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      animation: fadeDown 1s ease 0.4s both;
-    }
-    .hero-name span {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-    .hero-tagline {
-      margin-top: 1.75rem;
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.72);
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.75;
-      animation: fadeDown 1s ease 0.6s both;
-    }
-    .hero-divider {
-      width: 60px;
-      height: 1px;
-      background: var(--gold);
-      margin: 2rem auto;
-      animation: fadeDown 1s ease 0.7s both;
-    }
-    .hero-badges {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeDown 1s ease 0.8s both;
-    }
-    .badge {
-      padding: 0.45rem 1.1rem;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 2rem;
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.8);
-      backdrop-filter: blur(4px);
-      background: rgba(255,255,255,0.06);
-    }
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      animation: fadeDown 1.2s ease 1.2s both;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4));
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
-    }
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* Hero */
+    #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: var(--teal); padding: 8rem 4rem 6rem; }
+    .hero-bg-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle at 15% 85%, rgba(255,255,255,0.04) 0%, transparent 50%), radial-gradient(circle at 85% 20%, rgba(184,146,90,0.15) 0%, transparent 45%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; }
+    .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; }
+    .hero-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.5rem; animation: fadeDown 1s ease 0.2s both; }
+    .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 300; color: var(--white); line-height: 1.05; animation: fadeDown 1s ease 0.4s both; }
+    .hero-name span { font-style: italic; color: var(--gold-light); }
+    .hero-tagline { margin-top: 1.75rem; font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.72); max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.75; animation: fadeDown 1s ease 0.6s both; }
+    .hero-divider { width: 60px; height: 1px; background: var(--gold); margin: 2rem auto; animation: fadeDown 1s ease 0.7s both; }
+    .hero-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeDown 1s ease 0.8s both; }
+    .badge { padding: 0.45rem 1.1rem; border: 1px solid rgba(255,255,255,0.25); border-radius: 2rem; font-size: 0.75rem; color: rgba(255,255,255,0.8); backdrop-filter: blur(4px); background: rgba(255,255,255,0.06); }
+    .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; animation: fadeDown 1.2s ease 1.2s both; }
+    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4)); animation: scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ─── Sections ───────────────────────────────────── */
+    /* Sections */
     section { padding: 6rem 4rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 400;
-      color: var(--teal);
-      line-height: 1.15;
-      margin-bottom: 3rem;
-    }
+    .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 400; color: var(--teal); line-height: 1.15; margin-bottom: 3rem; }
     .section-title em { font-style: italic; }
-    .gold-line {
-      width: 48px;
-      height: 2px;
-      background: var(--gold);
-      margin-bottom: 3rem;
-    }
+    .gold-line { width: 48px; height: 2px; background: var(--gold); margin-bottom: 3rem; }
 
-    /* ─── About / Cover Letter ───────────────────────── */
+    /* About */
     #about { background: var(--white); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .about-photo-block {
-      position: relative;
-    }
-    .photo-frame {
-      width: 100%;
-      aspect-ratio: 4/5;
-      background: var(--cream-dark);
-      border-radius: 2px;
-      overflow: hidden;
-      position: relative;
-    }
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .photo-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      color: var(--text-light);
-    }
-    .photo-placeholder svg { width: 64px; height: 64px; opacity: 0.3; }
-    .photo-placeholder p { font-size: 0.8rem; opacity: 0.6; text-align: center; line-height: 1.5; }
-    .photo-accent {
-      position: absolute;
-      top: -16px; left: -16px;
-      width: 80%;
-      height: 80%;
-      border: 2px solid var(--teal-light);
-      border-radius: 2px;
-      z-index: -1;
-      opacity: 0.3;
-    }
-    .photo-caption {
-      margin-top: 1.25rem;
-      font-size: 0.8rem;
-      color: var(--text-light);
-      font-style: italic;
-      text-align: center;
-    }
-    .cover-letter-text p {
-      font-size: 1rem;
-      color: var(--text-mid);
-      margin-bottom: 1.25rem;
-      line-height: 1.85;
-    }
-    .cover-letter-text p:first-child {
-      font-size: 1.1rem;
-      color: var(--text);
-    }
-    .cover-letter-sig {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--cream-dark);
-    }
-    .cover-letter-sig p {
-      font-size: 0.85rem !important;
-      color: var(--text-light) !important;
-      margin-bottom: 0.25rem !important;
-    }
-    .cover-letter-sig .sig-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem !important;
-      font-style: italic;
-      color: var(--teal) !important;
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-photo-block { position: relative; }
+    .photo-frame { width: 100%; aspect-ratio: 4/5; background: var(--cream-dark); border-radius: 2px; overflow: hidden; }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .photo-accent { position: absolute; top: -16px; left: -16px; width: 80%; height: 80%; border: 2px solid var(--teal-light); border-radius: 2px; z-index: -1; opacity: 0.3; }
+    .photo-caption { margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-light); font-style: italic; text-align: center; }
+    .cover-letter-text p { font-size: 1rem; color: var(--text-mid); margin-bottom: 1.25rem; line-height: 1.85; }
+    .cover-letter-text p:first-child { font-size: 1.1rem; color: var(--text); }
+    .cover-letter-sig { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--cream-dark); }
+    .cover-letter-sig p { font-size: 0.85rem !important; color: var(--text-light) !important; margin-bottom: 0.25rem !important; }
+    .cover-letter-sig .sig-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem !important; font-style: italic; color: var(--teal) !important; }
 
-    /* ─── Experience ─────────────────────────────────── */
+    /* Experience */
     #experience { background: var(--cream); }
     .timeline { position: relative; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 8px; bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--teal-light), transparent);
-    }
-    .timeline-item {
-      padding-left: 3rem;
-      position: relative;
-      margin-bottom: 3.5rem;
-    }
-    .timeline-dot {
-      position: absolute;
-      left: -6px; top: 6px;
-      width: 13px; height: 13px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 2px solid var(--teal);
-    }
-    .timeline-date {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.35rem;
-    }
-    .timeline-role {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--teal);
-      margin-bottom: 0.15rem;
-    }
-    .timeline-place {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      letter-spacing: 0.06em;
-      margin-bottom: 0.85rem;
-    }
-    .timeline-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .timeline-bullets li {
-      font-size: 0.92rem;
-      color: var(--text-mid);
-      padding-left: 1.1rem;
-      position: relative;
-    }
-    .timeline-bullets li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: var(--teal-light);
-    }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--teal-light), transparent); }
+    .timeline-item { padding-left: 3rem; position: relative; margin-bottom: 3.5rem; }
+    .timeline-dot { position: absolute; left: -6px; top: 6px; width: 13px; height: 13px; border-radius: 50%; background: var(--white); border: 2px solid var(--teal); }
+    .timeline-date { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; }
+    .timeline-role { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--teal); margin-bottom: 0.15rem; }
+    .timeline-place { font-size: 0.82rem; color: var(--text-light); letter-spacing: 0.06em; margin-bottom: 0.85rem; }
+    .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .timeline-bullets li { font-size: 0.92rem; color: var(--text-mid); padding-left: 1.1rem; position: relative; }
+    .timeline-bullets li::before { content: '-'; position: absolute; left: 0; color: var(--teal-light); }
 
-    /* ─── Education & Certs ──────────────────────────── */
+    /* Education */
     #education { background: var(--teal); }
     #education .section-title { color: var(--white); }
     #education .section-label { color: var(--gold-light); }
-    .edu-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-    .edu-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 4px;
-      padding: 2rem;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .edu-card:hover {
-      background: rgba(255,255,255,0.11);
-      transform: translateY(-3px);
-    }
-    .edu-card-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 0.5rem;
-    }
-    .edu-card-school {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      color: var(--white);
-      font-weight: 400;
-      margin-bottom: 0.25rem;
-    }
-    .edu-card-degree {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 1rem;
-    }
-    .edu-card-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-    .edu-card-list li {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.5);
-      padding-left: 1rem;
-      position: relative;
-    }
-    .edu-card-list li::before {
-      content: '·';
-      position: absolute;
-      left: 0;
-      color: var(--gold-light);
-      font-size: 1rem;
-    }
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .edu-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 2rem; transition: background 0.3s, transform 0.3s; }
+    .edu-card:hover { background: rgba(255,255,255,0.11); transform: translateY(-3px); }
+    .edu-card-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; }
+    .edu-card-school { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--white); font-weight: 400; margin-bottom: 0.25rem; }
+    .edu-card-degree { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 1rem; }
+    .edu-card-list { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+    .edu-card-list li { font-size: 0.8rem; color: rgba(255,255,255,0.5); padding-left: 1rem; position: relative; }
+    .edu-card-list li::before { content: '·'; position: absolute; left: 0; color: var(--gold-light); font-size: 1rem; }
+    .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3.5rem; }
+    .cert-item { background: rgba(255,255,255,0.06); border-left: 2px solid var(--gold); padding: 1.1rem 1.25rem; }
+    .cert-title { font-size: 0.85rem; font-weight: 500; color: var(--white); margin-bottom: 0.2rem; }
+    .cert-sub { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
 
-    /* Licenses */
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-top: 3.5rem;
-    }
-    .cert-item {
-      background: rgba(255,255,255,0.06);
-      border-left: 2px solid var(--gold);
-      padding: 1.1rem 1.25rem;
-    }
-    .cert-title {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--white);
-      margin-bottom: 0.2rem;
-    }
-    .cert-sub {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.45);
-    }
-
-    /* ─── Skills ─────────────────────────────────────── */
+    /* Skills */
     #skills { background: var(--white); }
-    .skills-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .skills-intro {
-      font-size: 1rem;
-      color: var(--text-mid);
-      line-height: 1.85;
-    }
+    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .skills-intro { font-size: 1rem; color: var(--text-mid); line-height: 1.85; }
     .skills-intro p { margin-bottom: 1rem; }
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-    .skill-tag {
-      padding: 0.5rem 1rem;
-      background: var(--cream);
-      border: 1px solid var(--cream-dark);
-      border-radius: 2rem;
-      font-size: 0.78rem;
-      font-weight: 400;
-      color: var(--teal);
-      letter-spacing: 0.04em;
-      transition: all 0.2s;
-    }
-    .skill-tag:hover {
-      background: var(--teal);
-      color: var(--white);
-      border-color: var(--teal);
-    }
-    .software-list {
-      margin-top: 2rem;
-    }
-    .software-label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .skill-tag { padding: 0.5rem 1rem; background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 2rem; font-size: 0.78rem; color: var(--teal); letter-spacing: 0.04em; transition: all 0.2s; }
+    .skill-tag:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
+    .software-list { margin-top: 2rem; }
+    .software-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
     .software-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .software-tag {
-      padding: 0.35rem 0.85rem;
-      background: transparent;
-      border: 1px solid var(--teal-light);
-      border-radius: 2px;
-      font-size: 0.72rem;
-      color: var(--teal-mid);
-      letter-spacing: 0.06em;
-      font-family: 'Jost', monospace;
-    }
+    .software-tag { padding: 0.35rem 0.85rem; background: transparent; border: 1px solid var(--teal-light); border-radius: 2px; font-size: 0.72rem; color: var(--teal-mid); letter-spacing: 0.06em; }
 
-    /* ─── Philosophy ─────────────────────────────────── */
+    /* Philosophy */
     #philosophy { background: var(--cream-dark); }
-    .philosophy-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    blockquote.pull-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--teal);
-      line-height: 1.45;
-      position: relative;
-      padding-left: 2rem;
-    }
-    blockquote.pull-quote::before {
-      content: '\201C';
-      position: absolute;
-      left: -0.25rem;
-      top: -0.5rem;
-      font-size: 4rem;
-      color: var(--gold);
-      font-style: normal;
-      line-height: 1;
-      opacity: 0.4;
-    }
-    .philosophy-text { }
-    .philosophy-text h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      color: var(--teal);
-      margin-bottom: 0.75rem;
-      margin-top: 1.75rem;
-    }
+    .philosophy-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
+    blockquote.pull-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; font-style: italic; color: var(--teal); line-height: 1.45; position: relative; padding-left: 2rem; }
+    blockquote.pull-quote::before { content: '\201C'; position: absolute; left: -0.25rem; top: -0.5rem; font-size: 4rem; color: var(--gold); font-style: normal; line-height: 1; opacity: 0.4; }
+    .philosophy-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--teal); margin-bottom: 0.75rem; margin-top: 1.75rem; }
     .philosophy-text h3:first-child { margin-top: 0; }
-    .philosophy-text p {
-      font-size: 0.95rem;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin-bottom: 0.5rem;
-    }
-    .goals-list {
-      list-style: none;
-      margin-top: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    .goals-list li {
-      font-size: 0.9rem;
-      color: var(--text-mid);
-      padding-left: 1.5rem;
-      position: relative;
-      line-height: 1.6;
-    }
-    .goals-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      font-size: 0.85rem;
-    }
+    .philosophy-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 0.5rem; }
+    .goals-list { list-style: none; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .goals-list li { font-size: 0.9rem; color: var(--text-mid); padding-left: 1.5rem; position: relative; line-height: 1.6; }
+    .goals-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 0.85rem; }
 
-    /* ─── Projects ───────────────────────────────────── */
+    /* Projects */
     #projects { background: var(--white); }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-    .project-card {
-      background: var(--cream);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: default;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(30,95,84,0.12);
-    }
-    .project-banner {
-      height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-banner-1 { background: linear-gradient(135deg, #1e5f54, #2a7a6a); }
-    .project-banner-2 { background: linear-gradient(135deg, #4a3728, #7a5c3a); }
-    .project-banner-3 { background: linear-gradient(135deg, #2c4a6e, #3a6aa0); }
-    .project-banner-4 { background: linear-gradient(135deg, #5a3a5a, #8a5a8a); }
-    .project-banner-icon {
-      font-size: 3rem;
-      opacity: 0.5;
-    }
-    .project-banner-pattern {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.08) 0%, transparent 50%);
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .project-card { background: var(--cream); border-radius: 4px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(30,95,84,0.12); }
+    .project-banner { height: 160px; position: relative; overflow: hidden; }
+    .project-banner svg { width: 100%; height: 100%; display: block; }
     .project-body { padding: 1.75rem; }
-    .project-tag {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .project-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      color: var(--teal);
-      margin-bottom: 0.6rem;
-      line-height: 1.3;
-    }
-    .project-desc {
-      font-size: 0.85rem;
-      color: var(--text-mid);
-      line-height: 1.7;
-    }
-    .project-placeholder {
-      margin-top: 1rem;
-      padding: 0.6rem 0.85rem;
-      background: rgba(184,146,90,0.1);
-      border-left: 2px solid var(--gold);
-      font-size: 0.72rem;
-      color: var(--gold);
-      font-style: italic;
-    }
+    .project-tag { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .project-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--teal); margin-bottom: 0.6rem; line-height: 1.3; }
+    .project-desc { font-size: 0.82rem; color: var(--text-mid); line-height: 1.75; }
 
-    /* ─── Contact ────────────────────────────────────── */
-    #contact {
-      background: var(--teal);
-      text-align: center;
-    }
+    /* Contact */
+    #contact { background: var(--teal); text-align: center; }
     #contact .section-title { color: var(--white); }
     #contact .section-label { color: var(--gold-light); }
     #contact .gold-line { margin: 0 auto 3rem; }
-    .contact-blurb {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.65);
-      max-width: 560px;
-      margin: 0 auto 3rem;
-      line-height: 1.8;
-    }
-    .contact-cards {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 4px;
-      padding: 1.5rem 2rem;
-      min-width: 200px;
-      transition: background 0.2s;
-    }
+    .contact-blurb { font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto 3rem; line-height: 1.8; }
+    .contact-cards { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 1.5rem 2rem; min-width: 200px; transition: background 0.2s; }
     .contact-card:hover { background: rgba(255,255,255,0.13); }
-    .contact-card-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 0.5rem;
-    }
-    .contact-card-value {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.8);
-      font-weight: 300;
-    }
-    .contact-privacy-note {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.3);
-      font-style: italic;
-      max-width: 500px;
-      margin: 0 auto;
-    }
+    .contact-card-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; }
+    .contact-card-value { font-size: 0.9rem; color: rgba(255,255,255,0.8); font-weight: 300; }
+    .contact-card-value a { color: rgba(255,255,255,0.8); text-decoration: none; }
+    .contact-card-value a:hover { color: var(--gold-light); }
 
-    /* ─── Footer ─────────────────────────────────────── */
-    footer {
-      background: #0f3028;
-      padding: 2rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .footer-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.5);
-      font-style: italic;
-    }
-    .footer-copy {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.25);
-      letter-spacing: 0.1em;
-    }
+    footer { background: #0f3028; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(255,255,255,0.5); font-style: italic; }
+    .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
 
-    /* ─── Responsive ─────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links {
-        position: fixed;
-        top: 0; right: 0;
-        width: 280px; height: 100vh;
-        background: var(--cream);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2.5rem;
-        transform: translateX(100%);
-        transition: transform 0.35s ease;
-        box-shadow: -10px 0 40px rgba(0,0,0,0.1);
-      }
+      .nav-links { position: fixed; top: 0; right: 0; width: 280px; height: 100vh; background: var(--cream); flex-direction: column; justify-content: center; align-items: center; gap: 2.5rem; transform: translateX(100%); transition: transform 0.35s ease; box-shadow: -10px 0 40px rgba(0,0,0,0.1); }
       .nav-links.open { transform: translateX(0); }
       .nav-links a { font-size: 1rem; }
       .hamburger { display: flex; z-index: 200; }
       section { padding: 4rem 1.5rem; }
       #hero { padding: 7rem 1.5rem 5rem; }
-      .about-grid,
-      .edu-grid,
-      .skills-layout,
-      .philosophy-layout,
-      .projects-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-grid, .edu-grid, .skills-layout, .philosophy-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
       .certs-grid { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
     }
     @media (max-width: 480px) {
-      .hero-name { font-size: 2.8rem; }
       .certs-grid { grid-template-columns: 1fr; }
       .contact-cards { flex-direction: column; align-items: center; }
     }
@@ -786,480 +192,480 @@
 </head>
 <body>
 
-  <!-- ═══ NAV ════════════════════════════════════════ -->
-  <nav id="navbar">
-    <a class="nav-logo" href="#hero">Satdarshan Khalsa</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#philosophy">Philosophy</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
-      <span></span><span></span><span></span>
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">Satdarshan Khalsa</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Registered Dental Hygienist · Seattle, WA</p>
+    <h1 class="hero-name">Satdarshan<br><span>Khalsa</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Dedicated to providing every patient a positive experience through authentic warmth, compassion, and tailored oral health education, helping people achieve lasting oral and systemic wellness.</p>
+    <div style="height:2rem"></div>
+    <div class="hero-badges">
+      <span class="badge">BS Dental Hygiene · Shoreline CC 2026</span>
+      <span class="badge">CPR/BLS Certified</span>
+      <span class="badge">Pediatric · Perio · Community Health</span>
+      <span class="badge">WA RDH License Pending</span>
     </div>
-  </nav>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
 
-  <!-- ═══ HERO ═══════════════════════════════════════ -->
-  <section id="hero">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Registered Dental Hygienist · Seattle, WA</p>
-      <h1 class="hero-name">Satdarshan<br><span>Khalsa</span></h1>
-      <div class="hero-divider"></div>
-      <p class="hero-tagline">
-        Dedicated to providing every patient a positive experience through authentic warmth,
-        compassion, and tailored oral health education — helping people achieve lasting oral
-        and systemic wellness.
-      </p>
-      <div style="height:2rem"></div>
-      <div class="hero-badges">
-        <span class="badge">BS Dental Hygiene — Shoreline CC '26</span>
-        <span class="badge">CPR/BLS Certified</span>
-        <span class="badge">Pediatric · Perio · Community Health</span>
-        <span class="badge">WA RDH License — Pending</span>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo-block reveal-left">
+        <div class="photo-frame">
+          <img src="data:image/jpeg;base64,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" alt="Satdarshan Khalsa, RDH" />
+        </div>
+        <div class="photo-accent"></div>
+        <p class="photo-caption">Satdarshan Khalsa, RDH · Lynnwood, WA</p>
       </div>
-    </div>
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <!-- ═══ ABOUT / COVER LETTER ═══════════════════════ -->
-  <section id="about">
-    <div class="section-inner">
-      <div class="about-grid">
-
-        <!-- Photo -->
-        <div class="about-photo-block reveal-left">
-          <div class="photo-frame">
-            <div class="photo-placeholder">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-              </svg>
-              <p>Add your professional photo here<br /><small style="font-size:0.72em; opacity:0.7;">(Replace this block with your headshot)</small></p>
-            </div>
-          </div>
-          <div class="photo-accent"></div>
-          <p class="photo-caption">Satdarshan Khalsa, RDH · Lynnwood, WA</p>
-        </div>
-
-        <!-- Cover Letter -->
-        <div class="cover-letter-text reveal-right">
-          <p class="section-label">Cover Letter</p>
-          <h2 class="section-title">A genuine<br><em>passion for care</em></h2>
-          <div class="gold-line"></div>
-          <p>Dear Hiring Team,</p>
-          <p>
-            I am excited to apply for a Registered Dental Hygienist position at your practice. As a new
-            graduate from Shoreline Community College's Bachelor of Science in Dental Hygiene program, I bring
-            hands-on clinical experience across a range of settings and a genuine passion for helping patients
-            achieve lasting oral and systemic health.
-          </p>
-          <p>
-            Throughout my clinical training, I have had the privilege of working with diverse patient populations —
-            from pediatric patients at the UW Center for Pediatric Dentistry to adults with complex needs at a
-            Community Health Center in Everett and at the University of Washington Dental Hygiene Clinic.
-            In these roles, I performed preventive prophylaxis, administered local anesthesia, applied Silver
-            Diamine Fluoride, implemented nonsurgical periodontal therapies, and provided tailored oral health
-            instruction.
-          </p>
-          <p>
-            I also bring prior experience as a Dental Hygiene Assistant at Harbor Square Dental, where I developed
-            a strong foundation in restorative support and patient care alongside a collaborative team.
-          </p>
-          <p>
-            My additional background in dementia and mental health care, early childhood education, and nursing
-            assisting allows me to connect with patients of all ages and comfort levels with empathy and ease.
-          </p>
-          <p>
-            I am seeking a position where I can grow as a clinician, contribute meaningfully to a team, and build
-            long-term relationships with patients. Thank you for your time and consideration — I look forward to
-            the opportunity to connect.
-          </p>
-          <div class="cover-letter-sig">
-            <p>Sincerely,</p>
-            <p class="sig-name">Satdarshan Khalsa, RDH</p>
-            <p>Lynnwood, WA</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ EXPERIENCE ══════════════════════════════════ -->
-  <section id="experience">
-    <div class="section-inner">
-      <p class="section-label reveal">Professional Experience</p>
-      <h2 class="section-title reveal">Clinical <em>journey</em></h2>
-      <div class="gold-line reveal"></div>
-
-      <div class="timeline">
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <p class="timeline-date">July 2025 – June 2026</p>
-          <p class="timeline-role">Dental Hygiene Extern</p>
-          <p class="timeline-place">UW Center for Pediatric Dentistry · Seattle, WA</p>
-          <ul class="timeline-bullets">
-            <li>Performed preventive child prophylaxis on patients ages 4–14 years</li>
-            <li>Captured and interpreted radiographs to aid in diagnosis</li>
-            <li>Provided age-appropriate oral health instruction to patients and guardians</li>
-          </ul>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <p class="timeline-date">August 2025 – June 2026</p>
-          <p class="timeline-role">Dental Hygiene Extern</p>
-          <p class="timeline-place">Community Health Center · Everett, WA</p>
-          <ul class="timeline-bullets">
-            <li>Administered local anesthetic ensuring patient comfort</li>
-            <li>Implemented planned preventive prophylaxis and nonsurgical periodontal therapies</li>
-            <li>Applied Silver Diamine Fluoride to aid in arresting carious lesions and sealants</li>
-          </ul>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <p class="timeline-date">2022 – 2024</p>
-          <p class="timeline-role">Dental Hygiene Assistant</p>
-          <p class="timeline-place">Harbor Square Dental</p>
-          <ul class="timeline-bullets">
-            <li>Assisted with restorative procedures and patient assessments</li>
-            <li>Collaborated directly with dental hygienists to support patient care</li>
-            <li>Provided patient support throughout dental visits</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ EDUCATION & CERTS ════════════════════════════ -->
-  <section id="education">
-    <div class="section-inner">
-      <p class="section-label reveal">Education & Credentials</p>
-      <h2 class="section-title reveal">Built on a strong <em>foundation</em></h2>
-      <div class="gold-line reveal"></div>
-
-      <div class="edu-grid">
-
-        <div class="edu-card reveal">
-          <p class="edu-card-label">Bachelor of Science</p>
-          <p class="edu-card-school">Shoreline Community College</p>
-          <p class="edu-card-degree">BS Dental Hygiene · Expected 2026 · Seattle, WA</p>
-          <ul class="edu-card-list">
-            <li>Extramural DeCOD Rotation</li>
-            <li>Restorative Clinic</li>
-            <li>Community Oral Health Placement</li>
-            <li>Hands-on clinic practice: SRP, PMT, AD</li>
-            <li>Dental Public Health Rotation</li>
-          </ul>
-        </div>
-
-        <div class="edu-card reveal">
-          <p class="edu-card-label">Associate of Arts</p>
-          <p class="edu-card-school">Phoenix Community College</p>
-          <p class="edu-card-degree">Associates in Arts · 2023 · Phoenix, AZ</p>
-          <ul class="edu-card-list">
-            <li>General education foundational coursework</li>
-          </ul>
-        </div>
-
-        <div class="edu-card reveal">
-          <p class="edu-card-label">Certification</p>
-          <p class="edu-card-school">Dental Assistant Training Institute</p>
-          <p class="edu-card-degree">Dental Assistant Certification · 2023 · Seattle, WA</p>
-          <ul class="edu-card-list">
-            <li>Restorative support and chairside assisting</li>
-            <li>Infection control and clinical procedures</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Licenses & Certs -->
-      <div style="margin-top: 3.5rem">
-        <p class="section-label reveal" style="color: var(--gold-light);">Licenses & Certifications</p>
-      </div>
-      <div class="certs-grid">
-        <div class="cert-item reveal">
-          <p class="cert-title">Washington State RDH License</p>
-          <p class="cert-sub">Pending</p>
-        </div>
-        <div class="cert-item reveal">
-          <p class="cert-title">CPR / BLS / 1st Aid for Healthcare Workers</p>
-          <p class="cert-sub">2025 – Current</p>
-        </div>
-        <div class="cert-item reveal">
-          <p class="cert-title">Dementia & Mental Health Training</p>
-          <p class="cert-sub">Aegis Living · 2021</p>
+      <div class="cover-letter-text reveal-right">
+        <p class="section-label">Cover Letter</p>
+        <h2 class="section-title">A genuine<br><em>passion for care</em></h2>
+        <div class="gold-line"></div>
+        <p>Dear Hiring Team,</p>
+        <p>I am excited to apply for a Registered Dental Hygienist position at your practice. As a new graduate from Shoreline Community College's Bachelor of Science in Dental Hygiene program, I bring hands-on clinical experience across a range of settings and a genuine passion for helping patients achieve lasting oral and systemic health.</p>
+        <p>Throughout my clinical training, I have had the privilege of working with diverse patient populations, from pediatric patients at the UW Center for Pediatric Dentistry to adults with complex needs at a Community Health Center in Everett and at the University of Washington Dental Hygiene Clinic. In these roles, I performed preventive prophylaxis, administered local anesthesia via both traditional syringe technique and CCLAD device, applied Silver Diamine Fluoride, implemented nonsurgical periodontal therapies, captured and interpreted radiographs, and provided personalized oral hygiene instruction to help each patient build a home care routine tailored to their unique needs.</p>
+        <p>I also bring prior experience as a Dental Hygiene Assistant at Harbor Square Dental, where I developed a strong foundation in restorative support and patient care alongside a collaborative team.</p>
+        <p>My additional background in dementia and mental health care, early childhood education, and nursing assisting allows me to connect with patients of all ages and comfort levels with empathy and ease.</p>
+        <p>I am seeking a position where I can grow as a clinician, contribute meaningfully to a team, and build long-term relationships with patients. Thank you for your time and consideration. I look forward to the opportunity to connect.</p>
+        <div class="cover-letter-sig">
+          <p>Sincerely,</p>
+          <p class="sig-name">Satdarshan Khalsa, RDH</p>
+          <p>Lynnwood, WA</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ SKILLS ══════════════════════════════════════ -->
-  <section id="skills">
-    <div class="section-inner">
-      <div class="skills-layout">
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label reveal">Professional Experience</p>
+    <h2 class="section-title reveal">Clinical <em>journey</em></h2>
+    <div class="gold-line reveal"></div>
+    <div class="timeline">
 
-        <div class="reveal-left">
-          <p class="section-label">Competencies</p>
-          <h2 class="section-title">What I bring<br><em>to the chair</em></h2>
-          <div class="gold-line"></div>
-          <div class="skills-intro">
-            <p>
-              My clinical toolkit spans preventive, periodontal, and restorative support — paired with
-              strong interpersonal skills developed through years of working with patients of all ages,
-              abilities, and backgrounds.
-            </p>
-          </div>
-          <div class="software-list">
-            <p class="software-label">Dental Software</p>
-            <div class="software-tags">
-              <span class="software-tag">Dentrix</span>
-              <span class="software-tag">Axium</span>
-              <span class="software-tag">MIPAC</span>
-              <span class="software-tag">itaroscanner</span>
-              <span class="software-tag">DEXIS</span>
-            </div>
-          </div>
-        </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">July 2025 - June 2026</p>
+        <p class="timeline-role">Dental Hygiene Extern</p>
+        <p class="timeline-place">UW Center for Pediatric Dentistry · Seattle, WA</p>
+        <ul class="timeline-bullets">
+          <li>Performed preventive child prophylaxis on patients ages 4 to 14 years</li>
+          <li>Captured and interpreted radiographs routinely to aid in diagnosis and treatment planning</li>
+          <li>Placed pit and fissure sealants to protect high-risk surfaces from carious lesions</li>
+          <li>Applied topical fluoride varnish as part of comprehensive caries prevention protocols</li>
+          <li>Delivered age-appropriate oral hygiene instruction and personalized home care game plans for patients and guardians</li>
+          <li>Utilized behavior management and early childhood education techniques to create positive, comfortable dental experiences for young patients</li>
+        </ul>
+      </div>
 
-        <div class="reveal-right">
-          <div class="skill-tags">
-            <span class="skill-tag">Periodontal Therapy</span>
-            <span class="skill-tag">Local Anesthetic</span>
-            <span class="skill-tag">Nitrous Oxide</span>
-            <span class="skill-tag">SRP</span>
-            <span class="skill-tag">Preventive Prophylaxis</span>
-            <span class="skill-tag">Dental Radiography</span>
-            <span class="skill-tag">Silver Diamine Fluoride</span>
-            <span class="skill-tag">Oral Health Assessments</span>
-            <span class="skill-tag">Patient Education</span>
-            <span class="skill-tag">Infection Control</span>
-            <span class="skill-tag">Early Childhood Education</span>
-            <span class="skill-tag">Behavior Management</span>
-            <span class="skill-tag">Dementia Care</span>
-            <span class="skill-tag">Restorative Support</span>
-            <span class="skill-tag">Nursing Assistant</span>
-            <span class="skill-tag">Detail Oriented</span>
-            <span class="skill-tag">Excellent Communicator</span>
-            <span class="skill-tag">Self-Motivated</span>
-          </div>
-        </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">August 2025 - June 2026</p>
+        <p class="timeline-role">Dental Hygiene Extern</p>
+        <p class="timeline-place">Community Health Center · Everett, WA</p>
+        <ul class="timeline-bullets">
+          <li>Administered local anesthetic via traditional syringe technique and CCLAD (Computer Controlled Local Anesthetic Delivery) device to ensure patient comfort</li>
+          <li>Routinely captured and interpreted full mouth and periapical radiographs to support diagnosis</li>
+          <li>Implemented planned preventive prophylaxis and nonsurgical periodontal therapies</li>
+          <li>Applied Silver Diamine Fluoride to arrest active carious lesions and placed sealants</li>
+          <li>Provided individualized oral hygiene instruction and personalized home care plans to help patients improve their oral biome and maintain healthier baselines between visits</li>
+          <li>Worked with diverse, high-need patient populations in a community health setting</li>
+        </ul>
+      </div>
 
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">Academic Year 2024 - 2026</p>
+        <p class="timeline-role">DECOD Extramural Rotation</p>
+        <p class="timeline-place">University of Washington · Seattle, WA</p>
+        <ul class="timeline-bullets">
+          <li>Provided dental hygiene care for high-acuity and medically complex patients in a university clinical setting</li>
+          <li>Utilized stabilization aids and adapted clinical techniques to meet the needs of patients with physical, developmental, and systemic health considerations</li>
+          <li>Collaborated with UW faculty, graduate students, and dental students to coordinate and support comprehensive, multidisciplinary patient care</li>
+          <li>Managed complex health histories, assessed risk factors, and delivered patient-centered treatment in a specialized high-need environment</li>
+          <li>Performed full-mouth assessments, periodontal charting, prophylaxis, SRP, and radiographic series on patients requiring advanced clinical management</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">2024 - 2026</p>
+        <p class="timeline-role">Student Dental Hygienist · Clinical Practice Days</p>
+        <p class="timeline-place">Shoreline Community College and University of Washington Dental Hygiene Clinic · Seattle, WA</p>
+        <ul class="timeline-bullets">
+          <li>Regular scheduled clinic days providing comprehensive dental hygiene care to a diverse patient population throughout the dental hygiene program</li>
+          <li>Worked closely alongside graduate periodontal students and dental students to co-manage complex patient cases and support multidisciplinary treatment planning</li>
+          <li>Performed full-mouth assessments, periodontal charting, prophylaxis, scaling and root planing, and radiographic series</li>
+          <li>Delivered individualized oral hygiene instruction and personalized home care plans at every patient visit</li>
+          <li>Developed clinical confidence, speed, and adaptability through consistent hands-on patient care under faculty supervision</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">2022 - 2024</p>
+        <p class="timeline-role">Dental Hygiene Assistant</p>
+        <p class="timeline-place">Harbor Square Dental</p>
+        <ul class="timeline-bullets">
+          <li>Assisted with restorative procedures and patient assessments</li>
+          <li>Collaborated directly with dental hygienists to support patient care</li>
+          <li>Provided patient support throughout dental visits</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <p class="section-label reveal">Education and Credentials</p>
+    <h2 class="section-title reveal">Built on a strong <em>foundation</em></h2>
+    <div class="gold-line reveal"></div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <p class="edu-card-label">Bachelor of Science</p>
+        <p class="edu-card-school">Shoreline Community College</p>
+        <p class="edu-card-degree">BS Dental Hygiene · Expected 2026 · Seattle, WA</p>
+        <ul class="edu-card-list">
+          <li>Extramural DECOD Rotation</li>
+          <li>Restorative Clinic: Class I, II, III, IV, and V restorations</li>
+          <li>Hands-on clinic practice: SRP, PMT, AD</li>
+          <li>Local anesthesia via syringe and CCLAD device</li>
+          <li>Community Oral Health Placement</li>
+          <li>Dental Public Health Rotation</li>
+        </ul>
+      </div>
+      <div class="edu-card reveal">
+        <p class="edu-card-label">Associate of Arts</p>
+        <p class="edu-card-school">Phoenix Community College</p>
+        <p class="edu-card-degree">Associates in Arts · 2023 · Phoenix, AZ</p>
+      </div>
+      <div class="edu-card reveal">
+        <p class="edu-card-label">Certification</p>
+        <p class="edu-card-school">Dental Assistant Training Institute</p>
+        <p class="edu-card-degree">Dental Assistant Certification · 2023 · Seattle, WA</p>
+        <ul class="edu-card-list">
+          <li>Restorative support and chairside assisting</li>
+          <li>Infection control and clinical procedures</li>
+        </ul>
       </div>
     </div>
-  </section>
-
-  <!-- ═══ PHILOSOPHY & GOALS ══════════════════════════ -->
-  <section id="philosophy">
-    <div class="section-inner">
-      <div class="philosophy-layout">
-
-        <blockquote class="pull-quote reveal-left">
-          Every patient deserves to feel seen, heard, and cared for — not just treated.
-        </blockquote>
-
-        <div class="philosophy-text reveal-right">
-          <p class="section-label">My Philosophy & Goals</p>
-
-          <h3>Clinical Philosophy</h3>
-          <p>
-            I believe that dental hygiene is more than a clinical procedure — it's a relationship.
-            My approach begins with listening: understanding a patient's fears, history, and goals
-            before I ever pick up an instrument. I aim to create an environment where patients feel
-            genuinely comfortable and empowered to take ownership of their oral health.
-          </p>
-          <p>
-            My background working with pediatric patients, elderly populations, and individuals with
-            special needs has taught me that effective care is deeply personalized. Every patient walks
-            in with a unique story, and I tailor my communication and treatment to meet them where they are.
-          </p>
-
-          <h3>Professional Goals</h3>
-          <ul class="goals-list">
-            <li>Obtain my Washington State RDH license and establish myself in a patient-centered practice that values preventive care</li>
-            <li>Continue developing my skills in periodontal therapy, local anesthesia administration, and caries prevention</li>
-            <li>Build long-term relationships with patients and contribute to a collaborative, supportive team environment</li>
-            <li>Engage in community oral health outreach, particularly for underserved and pediatric populations</li>
-            <li>Pursue continuing education to stay current with evolving evidence-based dental hygiene practices</li>
-          </ul>
-        </div>
-
+    <div style="margin-top: 3.5rem">
+      <p class="section-label reveal" style="color: var(--gold-light);">Licenses and Certifications</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-item reveal">
+        <p class="cert-title">Washington State RDH License</p>
+        <p class="cert-sub">Pending</p>
+      </div>
+      <div class="cert-item reveal">
+        <p class="cert-title">CPR / BLS / 1st Aid for Healthcare Workers</p>
+        <p class="cert-sub">2025 - Current</p>
+      </div>
+      <div class="cert-item reveal">
+        <p class="cert-title">Dementia and Mental Health Training</p>
+        <p class="cert-sub">Aegis Living · 2021</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ PROJECTS ════════════════════════════════════ -->
-  <section id="projects">
-    <div class="section-inner">
-      <p class="section-label reveal">Portfolio Showcase</p>
-      <h2 class="section-title reveal">Projects & <em>clinical work</em></h2>
-      <div class="gold-line reveal"></div>
-
-      <div class="projects-grid">
-
-        <div class="project-card reveal">
-          <div class="project-banner project-banner-1">
-            <div class="project-banner-pattern"></div>
-            <span class="project-banner-icon">🦷</span>
-          </div>
-          <div class="project-body">
-            <p class="project-tag">Community Health Education</p>
-            <p class="project-title">HPV & Oral Cancer Education Infographic</p>
-            <p class="project-desc">
-              Designed a patient-facing infographic for clinical distribution covering oral HPV screening,
-              Gardasil 9 vaccination, and the link between HPV and oropharyngeal cancer — aimed at increasing
-              patient awareness and early detection.
-            </p>
-            <div class="project-placeholder">📎 Add your infographic file or image link here</div>
-          </div>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="skills-layout">
+      <div class="reveal-left">
+        <p class="section-label">Competencies</p>
+        <h2 class="section-title">What I bring<br><em>to the chair</em></h2>
+        <div class="gold-line"></div>
+        <div class="skills-intro">
+          <p>My clinical toolkit spans preventive, periodontal, and restorative support, paired with strong interpersonal skills developed through years of working with patients of all ages, abilities, and backgrounds.</p>
         </div>
-
-        <div class="project-card reveal">
-          <div class="project-banner project-banner-2">
-            <div class="project-banner-pattern"></div>
-            <span class="project-banner-icon">🚭</span>
+        <div class="software-list">
+          <p class="software-label">Dental Software</p>
+          <div class="software-tags">
+            <span class="software-tag">Dentrix</span>
+            <span class="software-tag">Axium</span>
+            <span class="software-tag">MIPAC</span>
+            <span class="software-tag">itaroscanner</span>
+            <span class="software-tag">DEXIS</span>
           </div>
-          <div class="project-body">
-            <p class="project-tag">Patient Health Literacy</p>
-            <p class="project-title">Tobacco Cessation: Nicotine Patch Resource</p>
-            <p class="project-desc">
-              Developed an evidence-based patient education resource on the nicotine transdermal patch as
-              a smoking cessation tool — covering mechanism of action, usage guidance, and the oral health
-              benefits of quitting.
-            </p>
-            <div class="project-placeholder">📎 Add your patient resource file or link here</div>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="project-banner project-banner-3">
-            <div class="project-banner-pattern"></div>
-            <span class="project-banner-icon">🏡</span>
-          </div>
-          <div class="project-body">
-            <p class="project-tag">Community Oral Health Rotation</p>
-            <p class="project-title">Senior Living Oral Health Education Program</p>
-            <p class="project-desc">
-              Contributed to a group academic paper and community oral health program for residents of a
-              senior living facility — designing education materials, conducting pre/post surveys to assess
-              oral health knowledge, and analyzing outcomes to evaluate program effectiveness.
-            </p>
-            <div class="project-placeholder">📎 Add your paper, slides, or summary here</div>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="project-banner project-banner-4">
-            <div class="project-banner-pattern"></div>
-            <span class="project-banner-icon">🔬</span>
-          </div>
-          <div class="project-body">
-            <p class="project-tag">Clinical Case Study</p>
-            <p class="project-title">Caries Control Patient Case Reflection</p>
-            <p class="project-desc">
-              Reflective clinical case study on a complex patient presenting with active infection and
-              significant barriers to care — applying evidence-based caries control strategies, interdisciplinary
-              communication, and patient-centered decision-making.
-            </p>
-            <div class="project-placeholder">📎 Add your case write-up or reflection here</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ CONTACT ══════════════════════════════════════ -->
-  <section id="contact">
-    <div class="section-inner">
-      <p class="section-label">Get in Touch</p>
-      <h2 class="section-title">Let's <em>connect</em></h2>
-      <div class="gold-line"></div>
-      <p class="contact-blurb reveal">
-        I am currently seeking RDH positions in the greater Seattle area and open to conversations
-        about clinical roles, community outreach opportunities, and professional networking.
-      </p>
-      <div class="contact-cards reveal">
-        <div class="contact-card">
-          <p class="contact-card-label">Location</p>
-          <p class="contact-card-value">Lynnwood, WA</p>
-        </div>
-        <div class="contact-card">
-          <p class="contact-card-label">Email</p>
-          <p class="contact-card-value">[your email here]</p>
-        </div>
-        <div class="contact-card">
-          <p class="contact-card-label">LinkedIn</p>
-          <p class="contact-card-value">[your LinkedIn here]</p>
-        </div>
-        <div class="contact-card">
-          <p class="contact-card-label">Phone</p>
-          <p class="contact-card-value">[your phone here]</p>
         </div>
       </div>
-      <p class="contact-privacy-note reveal">
-        ⚠ Privacy note: Review what personal contact information you want visible publicly before publishing.
-        Phone and personal email are optional — many professionals use LinkedIn or a contact form instead.
-      </p>
+      <div class="reveal-right">
+        <div class="skill-tags">
+          <span class="skill-tag">Periodontal Therapy</span>
+          <span class="skill-tag">Local Anesthetic (Syringe)</span>
+          <span class="skill-tag">CCLAD Anesthesia</span>
+          <span class="skill-tag">Nitrous Oxide</span>
+          <span class="skill-tag">Scaling and Root Planing</span>
+          <span class="skill-tag">Preventive Prophylaxis</span>
+          <span class="skill-tag">Pit and Fissure Sealants</span>
+          <span class="skill-tag">Fluoride Application</span>
+          <span class="skill-tag">Digital Radiography</span>
+          <span class="skill-tag">Radiographic Interpretation</span>
+          <span class="skill-tag">Silver Diamine Fluoride</span>
+          <span class="skill-tag">Oral Health Assessments</span>
+          <span class="skill-tag">Oral Hygiene Instruction (OHI)</span>
+          <span class="skill-tag">Personalized Home Care Planning</span>
+          <span class="skill-tag">Class I-V Restorations</span>
+          <span class="skill-tag">Patient Education</span>
+          <span class="skill-tag">Infection Control</span>
+          <span class="skill-tag">Early Childhood Education</span>
+          <span class="skill-tag">Behavior Management</span>
+          <span class="skill-tag">Dementia Care</span>
+          <span class="skill-tag">Restorative Support</span>
+          <span class="skill-tag">Excellent Communicator</span>
+          <span class="skill-tag">Detail Oriented</span>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ FOOTER ══════════════════════════════════════ -->
-  <footer>
-    <span class="footer-name">Satdarshan Khalsa, RDH</span>
-    <span class="footer-copy">© 2026 · All rights reserved</span>
-  </footer>
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="section-inner">
+    <div class="philosophy-layout">
+      <blockquote class="pull-quote reveal-left">
+        Every patient deserves to feel seen, heard, and cared for, not just treated.
+      </blockquote>
+      <div class="philosophy-text reveal-right">
+        <p class="section-label">My Philosophy and Goals</p>
+        <h3>Clinical Philosophy</h3>
+        <p>I believe that dental hygiene is more than a clinical procedure; it is a relationship. My approach begins with listening: understanding a patient's fears, history, and goals before I ever pick up an instrument. I aim to create an environment where patients feel genuinely comfortable and empowered to take ownership of their oral health.</p>
+        <p>A core part of my practice is personalized oral hygiene instruction. I work with each patient to build a home care game plan that fits their lifestyle, supports their oral biome, and gives them the tools they need to achieve a healthier baseline between visits.</p>
+        <p>My background working with pediatric patients, elderly populations, and individuals with special needs has taught me that effective care is deeply personalized. Every patient walks in with a unique story, and I tailor my communication and treatment to meet them where they are.</p>
+        <h3>Professional Goals</h3>
+        <ul class="goals-list">
+          <li>Obtain my Washington State RDH license and establish myself in a patient-centered practice that values preventive care</li>
+          <li>Continue developing my skills in periodontal therapy, local anesthesia, and individualized caries prevention</li>
+          <li>Build long-term relationships with patients and contribute to a collaborative, supportive team environment</li>
+          <li>Engage in community oral health outreach, particularly for underserved and pediatric populations</li>
+          <li>Embrace emerging technologies such as laser therapy for periodontal treatment, and other advancements reshaping the future of dental hygiene practice</li>
+          <li>Pursue continuing education to stay current with evidence-based practices and integrate new tools that meaningfully improve patient outcomes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- ═══ JS ══════════════════════════════════════════ -->
-  <script>
-    // Scroll-reveal
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          const siblings = [...entry.target.parentElement.querySelectorAll('.reveal, .reveal-left, .reveal-right')];
-          const idx = siblings.indexOf(entry.target);
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, idx * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => observer.observe(el));
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label reveal">Portfolio Showcase</p>
+    <h2 class="section-title reveal">Projects and <em>clinical work</em></h2>
+    <div class="gold-line reveal"></div>
+    <div class="projects-grid">
 
-    // Nav shadow on scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
+      <!-- Project 1: Patient Case Study -->
+      <div class="project-card reveal">
+        <div class="project-banner">
+          <svg viewBox="0 0 600 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="pg1a" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1a3a5a"/>
+                <stop offset="100%" stop-color="#2c5282"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="160" fill="url(#pg1a)"/>
+            <!-- Subtle grid lines -->
+            <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="0" y1="80" x2="600" y2="80" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="0" y1="120" x2="600" y2="120" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="150" y1="0" x2="150" y2="160" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="300" y1="0" x2="300" y2="160" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="450" y1="0" x2="450" y2="160" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <!-- Tooth silhouette (abstract) -->
+            <path d="M260 30 C255 20 240 18 235 30 C230 42 232 60 238 70 C242 78 248 82 255 82 C262 82 268 78 272 70 C278 60 280 42 275 30 C270 18 265 20 260 30 Z" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <!-- Root lines -->
+            <line x1="247" y1="82" x2="243" y2="115" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+            <line x1="263" y1="82" x2="267" y2="115" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+            <!-- Circular accent -->
+            <circle cx="490" cy="30" r="60" fill="none" stroke="rgba(184,146,90,0.2)" stroke-width="1"/>
+            <circle cx="490" cy="30" r="40" fill="none" stroke="rgba(184,146,90,0.15)" stroke-width="1"/>
+            <!-- Small dots -->
+            <circle cx="80" cy="130" r="2" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="100" cy="120" r="2" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="120" cy="135" r="2" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="140" cy="118" r="2" fill="rgba(255,255,255,0.2)"/>
+            <line x1="80" y1="130" x2="100" y2="120" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="100" y1="120" x2="120" y2="135" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="120" y1="135" x2="140" y2="118" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <!-- Label -->
+            <text x="30" y="50" font-family="Georgia, serif" font-size="28" fill="rgba(255,255,255,0.85)" font-style="italic">Patient</text>
+            <text x="30" y="82" font-family="Georgia, serif" font-size="28" fill="rgba(212,173,120,0.9)" font-style="italic">Case Study</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">3-Quarter Clinical Case Study</p>
+          <p class="project-title">From Severe Unstable Perio to Stable: A Full Patient Journey</p>
+          <p class="project-desc">This comprehensive case study spans three academic quarters and documents a patient who had not received dental care in over 8 years. Upon initial assessment, the patient presented with severe white coat syndrome (dental anxiety) and severe unstable periodontal disease. Building trust was as important as the clinical work. Through consistent, patient-centered appointments, the relationship was developed slowly and intentionally.</p>
+          <p class="project-desc" style="margin-top:0.75rem">Clinically, treatment included full mouth radiographic series, comprehensive periodontal charting, scaling and root planing, and ongoing re-evaluation. Personalized oral hygiene instruction and home care plans were crafted at each visit to progressively build a routine that fit the patient's lifestyle. By the final quarter, the patient had achieved stable periodontal status and a consistent, manageable home care routine, a meaningful transformation in both oral health and confidence in the dental setting.</p>
+          <p class="project-desc" style="margin-top:0.75rem">Working closely with this patient went well beyond the operatory. Between appointments, the focus was on building sustainable daily habits through genuine collaboration. A personalized nutritional plan was developed together, targeting a reduction in fermentable carbohydrate frequency to lower acid attack exposure, increasing fluoride intake through optimized toothpaste selection and supplemental rinses, and improving hydration habits to support healthy salivary flow. This day-to-day coaching approach was central to the patient's overall progress and helped translate clinical improvements into lasting lifestyle changes they could realistically maintain.</p>
+        </div>
+      </div>
+
+      <!-- Project 2: Senior Living -->
+      <div class="project-card reveal">
+        <div class="project-banner">
+          <svg viewBox="0 0 600 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="pg2a" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1e5f54"/>
+                <stop offset="100%" stop-color="#0f3028"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="160" fill="url(#pg2a)"/>
+            <!-- Concentric rings suggesting community -->
+            <circle cx="500" cy="80" r="100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <circle cx="500" cy="80" r="70" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+            <circle cx="500" cy="80" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <circle cx="500" cy="80" r="15" fill="rgba(184,146,90,0.25)"/>
+            <!-- Flowing wave lines -->
+            <path d="M0 60 C80 40 160 80 240 60 S400 40 480 60 S580 80 600 60" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <path d="M0 80 C80 60 160 100 240 80 S400 60 480 80 S580 100 600 80" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <path d="M0 100 C80 80 160 120 240 100 S400 80 480 100 S580 120 600 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <!-- Small people/community dots -->
+            <circle cx="80" cy="50" r="10" fill="rgba(255,255,255,0.08)"/>
+            <circle cx="160" cy="110" r="8" fill="rgba(255,255,255,0.06)"/>
+            <circle cx="240" cy="45" r="12" fill="rgba(255,255,255,0.07)"/>
+            <!-- Text -->
+            <text x="30" y="55" font-family="Georgia, serif" font-size="26" fill="rgba(255,255,255,0.85)" font-style="italic">Community</text>
+            <text x="30" y="88" font-family="Georgia, serif" font-size="26" fill="rgba(212,173,120,0.9)" font-style="italic">Oral Health</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Community Oral Health Rotation</p>
+          <p class="project-title">Senior Living Oral Health Education Program</p>
+          <p class="project-desc">Developed and delivered a comprehensive oral health education program for residents of a senior living facility. The curriculum focused on oral cancer awareness, teaching residents what to look for, how to distinguish normal tissues from changes that warrant professional evaluation, and why early detection matters.</p>
+          <p class="project-desc" style="margin-top:0.75rem">The program also covered proper care for prostheses, implants, bridges, and partials, addressing the unique maintenance needs of each. Residents received practical guidance on combating harmful oral bacteria, reducing plaque and biofilm accumulation, and maintaining the health of their natural teeth and surrounding tissues. Pre and post surveys were used to assess knowledge outcomes and evaluate program effectiveness, ensuring the education was both accessible and impactful for this population.</p>
+        </div>
+      </div>
+
+      <!-- Project 3: Caries Control -->
+      <div class="project-card reveal">
+        <div class="project-banner">
+          <svg viewBox="0 0 600 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="pg3a" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3d2359"/>
+                <stop offset="100%" stop-color="#5a3a7a"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="160" fill="url(#pg3a)"/>
+            <!-- Molecular/crystal hexagonal pattern -->
+            <polygon points="300,20 330,37 330,72 300,89 270,72 270,37" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+            <polygon points="330,72 360,89 360,124 330,141 300,124 300,89" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <polygon points="270,72 300,89 300,124 270,141 240,124 240,89" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <polygon points="360,20 390,37 390,72 360,89 330,72 330,37" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <polygon points="240,20 270,37 270,72 240,89 210,72 210,37" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <!-- Nodes -->
+            <circle cx="300" cy="54" r="5" fill="rgba(212,173,120,0.6)"/>
+            <circle cx="330" cy="72" r="4" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="270" cy="72" r="4" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="300" cy="89" r="4" fill="rgba(255,255,255,0.2)"/>
+            <!-- Risk arrow going down -->
+            <line x1="470" y1="35" x2="470" y2="120" stroke="rgba(184,146,90,0.5)" stroke-width="2"/>
+            <polygon points="470,125 462,108 478,108" fill="rgba(184,146,90,0.5)"/>
+            <text x="430" y="30" font-family="Georgia, serif" font-size="11" fill="rgba(255,255,255,0.4)">HIGH</text>
+            <text x="426" y="130" font-family="Georgia, serif" font-size="11" fill="rgba(212,173,120,0.7)">LOW</text>
+            <!-- Text -->
+            <text x="30" y="55" font-family="Georgia, serif" font-size="26" fill="rgba(255,255,255,0.85)" font-style="italic">Caries</text>
+            <text x="30" y="88" font-family="Georgia, serif" font-size="26" fill="rgba(212,173,120,0.9)" font-style="italic">Risk Reduction</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Caries Control and Prevention</p>
+          <p class="project-title">High-Risk to Manageable: ADA Caries Risk Reduction Case</p>
+          <p class="project-desc">This case study documents a patient who initially presented as high caries risk according to the ADA Caries Risk Assessment checklist. Over multiple appointments, a comprehensive and individualized prevention plan was developed and refined collaboratively with the patient.</p>
+          <p class="project-desc" style="margin-top:0.75rem">The approach addressed multiple contributing factors including dietary habits, home care routine development, fluoride use, and patient education on caries etiology and the role of the oral microbiome. Current restorative needs were identified and coordinated as part of the overall plan. Through consistent re-evaluation, motivational interviewing, and evidence-based preventive strategies, the patient progressed from high caries risk to a manageable moderate-to-low risk level, demonstrating meaningful and measurable improvement in their long-term oral health trajectory.</p>
+          <p class="project-desc" style="margin-top:0.75rem">This work extended into the patient's daily life. A personalized nutritional plan was developed collaboratively to address the frequency of fermentable carbohydrates and sugar-containing beverages that were driving repeated acid attacks and demineralization cycles. Fluoride intake was strategically increased through prescription-strength fluoride products, optimized toothpaste selection, and fluoride rinse protocols tailored to the patient's routine. Meal timing, snacking patterns, saliva-supporting habits, and hydration were all discussed and adjusted over time. This close, day-to-day collaboration with the patient was essential to achieving the measurable risk reduction reflected on the ADA Caries Risk Assessment checklist.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Let's <em>connect</em></h2>
+    <div class="gold-line"></div>
+    <p class="contact-blurb reveal">I am currently seeking RDH positions in the greater Seattle area and open to conversations about clinical roles, community outreach opportunities, and professional networking.</p>
+    <div class="contact-cards reveal">
+      <div class="contact-card">
+        <p class="contact-card-label">Location</p>
+        <p class="contact-card-value">Lynnwood, WA</p>
+      </div>
+      <div class="contact-card">
+        <p class="contact-card-label">Email</p>
+        <p class="contact-card-value"><a href="mailto:Satdarshandeedee@gmail.com">Satdarshandeedee@gmail.com</a></p>
+      </div>
+      <div class="contact-card">
+        <p class="contact-card-label">Phone</p>
+        <p class="contact-card-value"><a href="tel:6023095563">(602) 309-5563</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Satdarshan Khalsa, RDH</span>
+  <span class="footer-copy">2026 · All rights reserved</span>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal, .reveal-left, .reveal-right')];
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => { entry.target.classList.add('visible'); }, idx * 80);
+        observer.unobserve(entry.target);
+      }
     });
-
-    // Mobile menu
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
-  </script>
-
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('open'); navLinks.classList.remove('open'); }); });
+</script>
 </body>
 </html>
