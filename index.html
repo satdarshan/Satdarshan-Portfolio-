@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satdarshan Khalsa, RDH — Dental Hygiene Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── CSS Variables ─────────────────────────────── */
+    :root {
+      --teal:        #1e5f54;
+      --teal-mid:    #2a7a6a;
+      --teal-light:  #4a9e8e;
+      --cream:       #f7f2e9;
+      --cream-dark:  #ede6d6;
+      --gold:        #b8925a;
+      --gold-light:  #d4ad78;
+      --text:        #1c1c1c;
+      --text-mid:    #4a4a4a;
+      --text-light:  #7a7a7a;
+      --white:       #ffffff;
+    }
+
+    /* ─── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ─── Scroll Reveal ──────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ─── Navigation ─────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(247, 242, 233, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(30, 95, 84, 0.12);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(30, 95, 84, 0.08); }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 1px;
+      background: var(--teal);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--teal); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--teal);
+      padding: 8rem 4rem 6rem;
+    }
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 85%, rgba(255,255,255,0.04) 0%, transparent 50%),
+        radial-gradient(circle at 85% 20%, rgba(184,146,90,0.15) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(30,95,84,0.5) 0%, transparent 70%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.5rem;
+      animation: fadeDown 1s ease 0.2s both;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      animation: fadeDown 1s ease 0.4s both;
+    }
+    .hero-name span {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-tagline {
+      margin-top: 1.75rem;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.75;
+      animation: fadeDown 1s ease 0.6s both;
+    }
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2rem auto;
+      animation: fadeDown 1s ease 0.7s both;
+    }
+    .hero-badges {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeDown 1s ease 0.8s both;
+    }
+    .badge {
+      padding: 0.45rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.8);
+      backdrop-filter: blur(4px);
+      background: rgba(255,255,255,0.06);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: fadeDown 1.2s ease 1.2s both;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4));
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Sections ───────────────────────────────────── */
+    section { padding: 6rem 4rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--teal);
+      line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+    .section-title em { font-style: italic; }
+    .gold-line {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 3rem;
+    }
+
+    /* ─── About / Cover Letter ───────────────────────── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-photo-block {
+      position: relative;
+    }
+    .photo-frame {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--cream-dark);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--text-light);
+    }
+    .photo-placeholder svg { width: 64px; height: 64px; opacity: 0.3; }
+    .photo-placeholder p { font-size: 0.8rem; opacity: 0.6; text-align: center; line-height: 1.5; }
+    .photo-accent {
+      position: absolute;
+      top: -16px; left: -16px;
+      width: 80%;
+      height: 80%;
+      border: 2px solid var(--teal-light);
+      border-radius: 2px;
+      z-index: -1;
+      opacity: 0.3;
+    }
+    .photo-caption {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-style: italic;
+      text-align: center;
+    }
+    .cover-letter-text p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+      line-height: 1.85;
+    }
+    .cover-letter-text p:first-child {
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    .cover-letter-sig {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--cream-dark);
+    }
+    .cover-letter-sig p {
+      font-size: 0.85rem !important;
+      color: var(--text-light) !important;
+      margin-bottom: 0.25rem !important;
+    }
+    .cover-letter-sig .sig-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem !important;
+      font-style: italic;
+      color: var(--teal) !important;
+    }
+
+    /* ─── Experience ─────────────────────────────────── */
+    #experience { background: var(--cream); }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--teal-light), transparent);
+    }
+    .timeline-item {
+      padding-left: 3rem;
+      position: relative;
+      margin-bottom: 3.5rem;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -6px; top: 6px;
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--teal);
+    }
+    .timeline-date {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+    .timeline-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 0.15rem;
+    }
+    .timeline-place {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.85rem;
+    }
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .timeline-bullets li {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .timeline-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--teal-light);
+    }
+
+    /* ─── Education & Certs ──────────────────────────── */
+    #education { background: var(--teal); }
+    #education .section-title { color: var(--white); }
+    #education .section-label { color: var(--gold-light); }
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .edu-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .edu-card:hover {
+      background: rgba(255,255,255,0.11);
+      transform: translateY(-3px);
+    }
+    .edu-card-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .edu-card-school {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+    .edu-card-degree {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1rem;
+    }
+    .edu-card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .edu-card-list li {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      padding-left: 1rem;
+      position: relative;
+    }
+    .edu-card-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--gold-light);
+      font-size: 1rem;
+    }
+
+    /* Licenses */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+    }
+    .cert-item {
+      background: rgba(255,255,255,0.06);
+      border-left: 2px solid var(--gold);
+      padding: 1.1rem 1.25rem;
+    }
+    .cert-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .cert-sub {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ─── Skills ─────────────────────────────────────── */
+    #skills { background: var(--white); }
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .skills-intro {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+    .skills-intro p { margin-bottom: 1rem; }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .skill-tag {
+      padding: 0.5rem 1rem;
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: 2rem;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--teal);
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+    .skill-tag:hover {
+      background: var(--teal);
+      color: var(--white);
+      border-color: var(--teal);
+    }
+    .software-list {
+      margin-top: 2rem;
+    }
+    .software-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .software-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .software-tag {
+      padding: 0.35rem 0.85rem;
+      background: transparent;
+      border: 1px solid var(--teal-light);
+      border-radius: 2px;
+      font-size: 0.72rem;
+      color: var(--teal-mid);
+      letter-spacing: 0.06em;
+      font-family: 'Jost', monospace;
+    }
+
+    /* ─── Philosophy ─────────────────────────────────── */
+    #philosophy { background: var(--cream-dark); }
+    .philosophy-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    blockquote.pull-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--teal);
+      line-height: 1.45;
+      position: relative;
+      padding-left: 2rem;
+    }
+    blockquote.pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      left: -0.25rem;
+      top: -0.5rem;
+      font-size: 4rem;
+      color: var(--gold);
+      font-style: normal;
+      line-height: 1;
+      opacity: 0.4;
+    }
+    .philosophy-text { }
+    .philosophy-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+      margin-top: 1.75rem;
+    }
+    .philosophy-text h3:first-child { margin-top: 0; }
+    .philosophy-text p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+      margin-bottom: 0.5rem;
+    }
+    .goals-list {
+      list-style: none;
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .goals-list li {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    .goals-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.85rem;
+    }
+
+    /* ─── Projects ───────────────────────────────────── */
+    #projects { background: var(--white); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .project-card {
+      background: var(--cream);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(30,95,84,0.12);
+    }
+    .project-banner {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-banner-1 { background: linear-gradient(135deg, #1e5f54, #2a7a6a); }
+    .project-banner-2 { background: linear-gradient(135deg, #4a3728, #7a5c3a); }
+    .project-banner-3 { background: linear-gradient(135deg, #2c4a6e, #3a6aa0); }
+    .project-banner-4 { background: linear-gradient(135deg, #5a3a5a, #8a5a8a); }
+    .project-banner-icon {
+      font-size: 3rem;
+      opacity: 0.5;
+    }
+    .project-banner-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.08) 0%, transparent 50%);
+    }
+    .project-body { padding: 1.75rem; }
+    .project-tag {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .project-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--teal);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+    .project-placeholder {
+      margin-top: 1rem;
+      padding: 0.6rem 0.85rem;
+      background: rgba(184,146,90,0.1);
+      border-left: 2px solid var(--gold);
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* ─── Contact ────────────────────────────────────── */
+    #contact {
+      background: var(--teal);
+      text-align: center;
+    }
+    #contact .section-title { color: var(--white); }
+    #contact .section-label { color: var(--gold-light); }
+    #contact .gold-line { margin: 0 auto 3rem; }
+    .contact-blurb {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+    .contact-cards {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      min-width: 200px;
+      transition: background 0.2s;
+    }
+    .contact-card:hover { background: rgba(255,255,255,0.13); }
+    .contact-card-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .contact-card-value {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 300;
+    }
+    .contact-privacy-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ─── Footer ─────────────────────────────────────── */
+    footer {
+      background: #0f3028;
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+    }
+    .footer-copy {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── Responsive ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links {
+        position: fixed;
+        top: 0; right: 0;
+        width: 280px; height: 100vh;
+        background: var(--cream);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
+        box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+      }
+      .nav-links.open { transform: translateX(0); }
+      .nav-links a { font-size: 1rem; }
+      .hamburger { display: flex; z-index: 200; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 7rem 1.5rem 5rem; }
+      .about-grid,
+      .edu-grid,
+      .skills-layout,
+      .philosophy-layout,
+      .projects-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .certs-grid { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-name { font-size: 2.8rem; }
+      .certs-grid { grid-template-columns: 1fr; }
+      .contact-cards { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ════════════════════════════════════════ -->
+  <nav id="navbar">
+    <a class="nav-logo" href="#hero">Satdarshan Khalsa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Registered Dental Hygienist · Seattle, WA</p>
+      <h1 class="hero-name">Satdarshan<br><span>Khalsa</span></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">
+        Dedicated to providing every patient a positive experience through authentic warmth,
+        compassion, and tailored oral health education — helping people achieve lasting oral
+        and systemic wellness.
+      </p>
+      <div style="height:2rem"></div>
+      <div class="hero-badges">
+        <span class="badge">BS Dental Hygiene — Shoreline CC '26</span>
+        <span class="badge">CPR/BLS Certified</span>
+        <span class="badge">Pediatric · Perio · Community Health</span>
+        <span class="badge">WA RDH License — Pending</span>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT / COVER LETTER ═══════════════════════ -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+
+        <!-- Photo -->
+        <div class="about-photo-block reveal-left">
+          <div class="photo-frame">
+            <div class="photo-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+              </svg>
+              <p>Add your professional photo here<br /><small style="font-size:0.72em; opacity:0.7;">(Replace this block with your headshot)</small></p>
+            </div>
+          </div>
+          <div class="photo-accent"></div>
+          <p class="photo-caption">Satdarshan Khalsa, RDH · Lynnwood, WA</p>
+        </div>
+
+        <!-- Cover Letter -->
+        <div class="cover-letter-text reveal-right">
+          <p class="section-label">Cover Letter</p>
+          <h2 class="section-title">A genuine<br><em>passion for care</em></h2>
+          <div class="gold-line"></div>
+          <p>Dear Hiring Team,</p>
+          <p>
+            I am excited to apply for a Registered Dental Hygienist position at your practice. As a new
+            graduate from Shoreline Community College's Bachelor of Science in Dental Hygiene program, I bring
+            hands-on clinical experience across a range of settings and a genuine passion for helping patients
+            achieve lasting oral and systemic health.
+          </p>
+          <p>
+            Throughout my clinical training, I have had the privilege of working with diverse patient populations —
+            from pediatric patients at the UW Center for Pediatric Dentistry to adults with complex needs at a
+            Community Health Center in Everett and at the University of Washington Dental Hygiene Clinic.
+            In these roles, I performed preventive prophylaxis, administered local anesthesia, applied Silver
+            Diamine Fluoride, implemented nonsurgical periodontal therapies, and provided tailored oral health
+            instruction.
+          </p>
+          <p>
+            I also bring prior experience as a Dental Hygiene Assistant at Harbor Square Dental, where I developed
+            a strong foundation in restorative support and patient care alongside a collaborative team.
+          </p>
+          <p>
+            My additional background in dementia and mental health care, early childhood education, and nursing
+            assisting allows me to connect with patients of all ages and comfort levels with empathy and ease.
+          </p>
+          <p>
+            I am seeking a position where I can grow as a clinician, contribute meaningfully to a team, and build
+            long-term relationships with patients. Thank you for your time and consideration — I look forward to
+            the opportunity to connect.
+          </p>
+          <div class="cover-letter-sig">
+            <p>Sincerely,</p>
+            <p class="sig-name">Satdarshan Khalsa, RDH</p>
+            <p>Lynnwood, WA</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERIENCE ══════════════════════════════════ -->
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label reveal">Professional Experience</p>
+      <h2 class="section-title reveal">Clinical <em>journey</em></h2>
+      <div class="gold-line reveal"></div>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <p class="timeline-date">July 2025 – June 2026</p>
+          <p class="timeline-role">Dental Hygiene Extern</p>
+          <p class="timeline-place">UW Center for Pediatric Dentistry · Seattle, WA</p>
+          <ul class="timeline-bullets">
+            <li>Performed preventive child prophylaxis on patients ages 4–14 years</li>
+            <li>Captured and interpreted radiographs to aid in diagnosis</li>
+            <li>Provided age-appropriate oral health instruction to patients and guardians</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <p class="timeline-date">August 2025 – June 2026</p>
+          <p class="timeline-role">Dental Hygiene Extern</p>
+          <p class="timeline-place">Community Health Center · Everett, WA</p>
+          <ul class="timeline-bullets">
+            <li>Administered local anesthetic ensuring patient comfort</li>
+            <li>Implemented planned preventive prophylaxis and nonsurgical periodontal therapies</li>
+            <li>Applied Silver Diamine Fluoride to aid in arresting carious lesions and sealants</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <p class="timeline-date">2022 – 2024</p>
+          <p class="timeline-role">Dental Hygiene Assistant</p>
+          <p class="timeline-place">Harbor Square Dental</p>
+          <ul class="timeline-bullets">
+            <li>Assisted with restorative procedures and patient assessments</li>
+            <li>Collaborated directly with dental hygienists to support patient care</li>
+            <li>Provided patient support throughout dental visits</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EDUCATION & CERTS ════════════════════════════ -->
+  <section id="education">
+    <div class="section-inner">
+      <p class="section-label reveal">Education & Credentials</p>
+      <h2 class="section-title reveal">Built on a strong <em>foundation</em></h2>
+      <div class="gold-line reveal"></div>
+
+      <div class="edu-grid">
+
+        <div class="edu-card reveal">
+          <p class="edu-card-label">Bachelor of Science</p>
+          <p class="edu-card-school">Shoreline Community College</p>
+          <p class="edu-card-degree">BS Dental Hygiene · Expected 2026 · Seattle, WA</p>
+          <ul class="edu-card-list">
+            <li>Extramural DeCOD Rotation</li>
+            <li>Restorative Clinic</li>
+            <li>Community Oral Health Placement</li>
+            <li>Hands-on clinic practice: SRP, PMT, AD</li>
+            <li>Dental Public Health Rotation</li>
+          </ul>
+        </div>
+
+        <div class="edu-card reveal">
+          <p class="edu-card-label">Associate of Arts</p>
+          <p class="edu-card-school">Phoenix Community College</p>
+          <p class="edu-card-degree">Associates in Arts · 2023 · Phoenix, AZ</p>
+          <ul class="edu-card-list">
+            <li>General education foundational coursework</li>
+          </ul>
+        </div>
+
+        <div class="edu-card reveal">
+          <p class="edu-card-label">Certification</p>
+          <p class="edu-card-school">Dental Assistant Training Institute</p>
+          <p class="edu-card-degree">Dental Assistant Certification · 2023 · Seattle, WA</p>
+          <ul class="edu-card-list">
+            <li>Restorative support and chairside assisting</li>
+            <li>Infection control and clinical procedures</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Licenses & Certs -->
+      <div style="margin-top: 3.5rem">
+        <p class="section-label reveal" style="color: var(--gold-light);">Licenses & Certifications</p>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-item reveal">
+          <p class="cert-title">Washington State RDH License</p>
+          <p class="cert-sub">Pending</p>
+        </div>
+        <div class="cert-item reveal">
+          <p class="cert-title">CPR / BLS / 1st Aid for Healthcare Workers</p>
+          <p class="cert-sub">2025 – Current</p>
+        </div>
+        <div class="cert-item reveal">
+          <p class="cert-title">Dementia & Mental Health Training</p>
+          <p class="cert-sub">Aegis Living · 2021</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ══════════════════════════════════════ -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="skills-layout">
+
+        <div class="reveal-left">
+          <p class="section-label">Competencies</p>
+          <h2 class="section-title">What I bring<br><em>to the chair</em></h2>
+          <div class="gold-line"></div>
+          <div class="skills-intro">
+            <p>
+              My clinical toolkit spans preventive, periodontal, and restorative support — paired with
+              strong interpersonal skills developed through years of working with patients of all ages,
+              abilities, and backgrounds.
+            </p>
+          </div>
+          <div class="software-list">
+            <p class="software-label">Dental Software</p>
+            <div class="software-tags">
+              <span class="software-tag">Dentrix</span>
+              <span class="software-tag">Axium</span>
+              <span class="software-tag">MIPAC</span>
+              <span class="software-tag">itaroscanner</span>
+              <span class="software-tag">DEXIS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal-right">
+          <div class="skill-tags">
+            <span class="skill-tag">Periodontal Therapy</span>
+            <span class="skill-tag">Local Anesthetic</span>
+            <span class="skill-tag">Nitrous Oxide</span>
+            <span class="skill-tag">SRP</span>
+            <span class="skill-tag">Preventive Prophylaxis</span>
+            <span class="skill-tag">Dental Radiography</span>
+            <span class="skill-tag">Silver Diamine Fluoride</span>
+            <span class="skill-tag">Oral Health Assessments</span>
+            <span class="skill-tag">Patient Education</span>
+            <span class="skill-tag">Infection Control</span>
+            <span class="skill-tag">Early Childhood Education</span>
+            <span class="skill-tag">Behavior Management</span>
+            <span class="skill-tag">Dementia Care</span>
+            <span class="skill-tag">Restorative Support</span>
+            <span class="skill-tag">Nursing Assistant</span>
+            <span class="skill-tag">Detail Oriented</span>
+            <span class="skill-tag">Excellent Communicator</span>
+            <span class="skill-tag">Self-Motivated</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PHILOSOPHY & GOALS ══════════════════════════ -->
+  <section id="philosophy">
+    <div class="section-inner">
+      <div class="philosophy-layout">
+
+        <blockquote class="pull-quote reveal-left">
+          Every patient deserves to feel seen, heard, and cared for — not just treated.
+        </blockquote>
+
+        <div class="philosophy-text reveal-right">
+          <p class="section-label">My Philosophy & Goals</p>
+
+          <h3>Clinical Philosophy</h3>
+          <p>
+            I believe that dental hygiene is more than a clinical procedure — it's a relationship.
+            My approach begins with listening: understanding a patient's fears, history, and goals
+            before I ever pick up an instrument. I aim to create an environment where patients feel
+            genuinely comfortable and empowered to take ownership of their oral health.
+          </p>
+          <p>
+            My background working with pediatric patients, elderly populations, and individuals with
+            special needs has taught me that effective care is deeply personalized. Every patient walks
+            in with a unique story, and I tailor my communication and treatment to meet them where they are.
+          </p>
+
+          <h3>Professional Goals</h3>
+          <ul class="goals-list">
+            <li>Obtain my Washington State RDH license and establish myself in a patient-centered practice that values preventive care</li>
+            <li>Continue developing my skills in periodontal therapy, local anesthesia administration, and caries prevention</li>
+            <li>Build long-term relationships with patients and contribute to a collaborative, supportive team environment</li>
+            <li>Engage in community oral health outreach, particularly for underserved and pediatric populations</li>
+            <li>Pursue continuing education to stay current with evolving evidence-based dental hygiene practices</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECTS ════════════════════════════════════ -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label reveal">Portfolio Showcase</p>
+      <h2 class="section-title reveal">Projects & <em>clinical work</em></h2>
+      <div class="gold-line reveal"></div>
+
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <div class="project-banner project-banner-1">
+            <div class="project-banner-pattern"></div>
+            <span class="project-banner-icon">🦷</span>
+          </div>
+          <div class="project-body">
+            <p class="project-tag">Community Health Education</p>
+            <p class="project-title">HPV & Oral Cancer Education Infographic</p>
+            <p class="project-desc">
+              Designed a patient-facing infographic for clinical distribution covering oral HPV screening,
+              Gardasil 9 vaccination, and the link between HPV and oropharyngeal cancer — aimed at increasing
+              patient awareness and early detection.
+            </p>
+            <div class="project-placeholder">📎 Add your infographic file or image link here</div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-banner project-banner-2">
+            <div class="project-banner-pattern"></div>
+            <span class="project-banner-icon">🚭</span>
+          </div>
+          <div class="project-body">
+            <p class="project-tag">Patient Health Literacy</p>
+            <p class="project-title">Tobacco Cessation: Nicotine Patch Resource</p>
+            <p class="project-desc">
+              Developed an evidence-based patient education resource on the nicotine transdermal patch as
+              a smoking cessation tool — covering mechanism of action, usage guidance, and the oral health
+              benefits of quitting.
+            </p>
+            <div class="project-placeholder">📎 Add your patient resource file or link here</div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-banner project-banner-3">
+            <div class="project-banner-pattern"></div>
+            <span class="project-banner-icon">🏡</span>
+          </div>
+          <div class="project-body">
+            <p class="project-tag">Community Oral Health Rotation</p>
+            <p class="project-title">Senior Living Oral Health Education Program</p>
+            <p class="project-desc">
+              Contributed to a group academic paper and community oral health program for residents of a
+              senior living facility — designing education materials, conducting pre/post surveys to assess
+              oral health knowledge, and analyzing outcomes to evaluate program effectiveness.
+            </p>
+            <div class="project-placeholder">📎 Add your paper, slides, or summary here</div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-banner project-banner-4">
+            <div class="project-banner-pattern"></div>
+            <span class="project-banner-icon">🔬</span>
+          </div>
+          <div class="project-body">
+            <p class="project-tag">Clinical Case Study</p>
+            <p class="project-title">Caries Control Patient Case Reflection</p>
+            <p class="project-desc">
+              Reflective clinical case study on a complex patient presenting with active infection and
+              significant barriers to care — applying evidence-based caries control strategies, interdisciplinary
+              communication, and patient-centered decision-making.
+            </p>
+            <div class="project-placeholder">📎 Add your case write-up or reflection here</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ══════════════════════════════════════ -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Let's <em>connect</em></h2>
+      <div class="gold-line"></div>
+      <p class="contact-blurb reveal">
+        I am currently seeking RDH positions in the greater Seattle area and open to conversations
+        about clinical roles, community outreach opportunities, and professional networking.
+      </p>
+      <div class="contact-cards reveal">
+        <div class="contact-card">
+          <p class="contact-card-label">Location</p>
+          <p class="contact-card-value">Lynnwood, WA</p>
+        </div>
+        <div class="contact-card">
+          <p class="contact-card-label">Email</p>
+          <p class="contact-card-value">[your email here]</p>
+        </div>
+        <div class="contact-card">
+          <p class="contact-card-label">LinkedIn</p>
+          <p class="contact-card-value">[your LinkedIn here]</p>
+        </div>
+        <div class="contact-card">
+          <p class="contact-card-label">Phone</p>
+          <p class="contact-card-value">[your phone here]</p>
+        </div>
+      </div>
+      <p class="contact-privacy-note reveal">
+        ⚠ Privacy note: Review what personal contact information you want visible publicly before publishing.
+        Phone and personal email are optional — many professionals use LinkedIn or a contact form instead.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ══════════════════════════════════════ -->
+  <footer>
+    <span class="footer-name">Satdarshan Khalsa, RDH</span>
+    <span class="footer-copy">© 2026 · All rights reserved</span>
+  </footer>
+
+  <!-- ═══ JS ══════════════════════════════════════════ -->
+  <script>
+    // Scroll-reveal
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const siblings = [...entry.target.parentElement.querySelectorAll('.reveal, .reveal-left, .reveal-right')];
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, idx * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Nav shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
